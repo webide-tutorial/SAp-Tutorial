@@ -1,0 +1,145 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog showHeader="false" class="sapUiSizeCompact" width="100%"
+		id="API_FULL_RISK_ASSESSMENT_DIALOG">
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<Label text="Fall Risk Assessment" design="Bold" />
+				</contentMiddle>
+				<contentRight>
+					<Button id="API_FALL_RISK_ASSESSMENT_TOTAL" type="Emphasized" visible="false" />
+				</contentRight>
+			</Bar>
+
+		</subHeader>
+		<content>
+			<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+				vSpacing="10px">
+				<l:content>
+					<Table id="API_FRA_AGE_LIST" items="{Age>/AgeCollection}"
+						selectionChange="onSelectionChange" headerText="Age ({ScoreModel>Age/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{Age>Name}" wrapping="true" />
+								<Text text="{Age>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_FRA_FH_LIST" items="{FH>/FHCollection}"
+						selectionChange="onSelectionChange" headerText="Fall History ({ScoreModel>FallHistory/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{FH>Name}" wrapping="true" />
+								<Text text="{FH>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_FRA_EBU_LIST" items="{EBU>/EBUCollection}"
+						selectionChange="onSelectionChange"
+						headerText="Elimination,Bowel and Urine ({ScoreModel>EBU/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{EBU>Name}" wrapping="true" />
+								<Text text="{EBU>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</l:content>
+			</l:Grid>
+			<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+				vSpacing="10px">
+				<l:content>
+					<Table id="API_FRA_MED_LIST" items="{MED>/MEDCollection}"
+						selectionChange="onSelectionChange" headerText="Medication ({ScoreModel>Medication/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{MED>Name}" wrapping="true" />
+								<Text text="{MED>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_FRA_PCE_LIST" items="{PCE>/PCECollection}"
+						selectionChange="onSelectionChange" headerText="Patient Care Equipment ({ScoreModel>PCE/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{PCE>Name}" wrapping="true" />
+								<Text text="{PCE>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_FRA_MOB_LIST" items="{MOB>/MOBCollection}"
+						selectionChange="onMobilityMultiSelectionChange" headerText="Mobility ({ScoreModel>Mobility/Value})"
+						wrapping="true" includeItemInSelection="false" mode="MultiSelect">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{MOB>Name}" wrapping="true" />
+								<Text text="{MOB>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</l:content>
+			</l:Grid>
+			<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+				vSpacing="10px">
+				<l:content>
+					<Table id="API_FRA_CON_LIST" items="{CON>/CONCollection}"
+						selectionChange="onCognitionMultiSelectionChange" headerText="Cognition ({ScoreModel>Cognition/Value})"
+						wrapping="true" includeItemInSelection="false" mode="MultiSelect">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{CON>Name}" wrapping="true" />
+								<Text text="{CON>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</l:content>
+			</l:Grid>
+
+		</content>
+		<buttons>
+
+			<Button text="Release" press="_handleAPIFallRiskAssesReleasePressed" id="API_FRA_RELEASE_BUTTON"
+				app:dialogType="FallRiskAssessmentCreate" />
+			<Button text="Save" type="Accept" press="_handleAPIFallRiskAssesSavePressed" id="API_FRA_SAVE_BUTTON"
+				app:dialogType="FallRiskAssessmentCreate" />
+			<Button text="Cancel" type="Reject" press="onDialogclose"
+				app:dialogType="FallRiskAssessmentCreate" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

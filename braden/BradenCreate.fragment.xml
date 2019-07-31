@@ -1,0 +1,125 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog showHeader="false" class="sapUiSizeCompact" width="100%"
+		id="API_BRADEN_DIALOG">
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<Label text="Braden Score" design="Bold" />
+				</contentMiddle>
+				<contentRight>
+					<Button id="API_BRADEN_TOTAL" type="Emphasized" visible="false"/>
+				</contentRight>
+			</Bar>
+		</subHeader>
+		<content>
+			<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+				vSpacing="10px">
+				<l:content>
+					<Table id="API_BRADEN_SP_LIST" items="{SensoryPerception>/SRCollection}"
+						selectionChange="onSelectionChange"
+						headerText="Sensory Preception ({ScoreModel>SensoryPerception/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{SensoryPerception>Name}" wrapping="true" />
+								<Text text="{SensoryPerception>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_BRADEN_MOI_LIST" items="{Moisture>/MoistureCollection}"
+						selectionChange="onSelectionChange" headerText="Moisture ({ScoreModel>Moisture/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{Moisture>Name}" wrapping="true" />
+								<Text text="{Moisture>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_BRADEN_ACT_LIST" items="{Activity>/ActivityCollection}"
+						selectionChange="onSelectionChange" headerText="Activity ({ScoreModel>Activity/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{Activity>Name}" wrapping="true" />
+								<Text text="{Activity>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</l:content>
+			</l:Grid>
+			<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+				vSpacing="10px">
+				<l:content>
+					<Table id="API_BRADEN_MOB_LIST" items="{Mobility>/MobilityCollection}"
+						selectionChange="onSelectionChange" headerText="Mobility ({ScoreModel>Mobility/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{Mobility>Name}" wrapping="true" />
+								<Text text="{Mobility>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_BRADEN_NUT_LIST" items="{Nutrition>/NutritionCollection}"
+						selectionChange="onSelectionChange" headerText="Nutrition ({ScoreModel>Nutrition/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{Nutrition>Name}" wrapping="true" />
+								<Text text="{Nutrition>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+					<Table id="API_BRADEN_FS_LIST" items="{FrictionShear>/FrictionShearCollection}"
+						selectionChange="onSelectionChange"
+						headerText="Friction Shear ({ScoreModel>FrictionShear/Value})"
+						wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+						<columns>
+							<Column hAlign="Left" />
+							<Column width="10px" hAlign="Left" />
+						</columns>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Text text="{FrictionShear>Name}" wrapping="true" />
+								<Text text="{FrictionShear>Value}" class="numberUnit" />
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</l:content>
+			</l:Grid>
+		</content>
+		<buttons>
+
+			<Button text="Release" press="_handleAPIBradenReleasePressed" id="API_BRADEN_RELEASE_BUTTON"
+				app:dialogType="BradenCreate" />
+			<Button text="Save" type="Accept" press="_handleAPIBradenSavePressed" id="API_BRADEN_SAVE_BUTTON"
+				app:dialogType="BradenCreate" />
+			<Button text="Cancel" type="Reject" press="onDialogclose"
+				app:dialogType="BradenCreate" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

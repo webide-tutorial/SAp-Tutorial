@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog showHeader="false" class="sapUiSizeCompact" width="100%"
+		id="API_GLASSGOW_COMA_DIALOG">
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<Label text="Glasgow Coma Score" design="Bold" />
+				</contentMiddle>
+				<contentRight>
+					<Button id="API_GLASSGOW_COMA_TOTAL" type="Emphasized" visible="false"/>
+				</contentRight>
+			</Bar>
+
+		</subHeader>
+		<content>
+			<l:Grid defaultSpan="L4 M4 S12" width="auto"
+							position="Center" vSpacing="10px">
+							<l:content>
+								<Table id="API_GCS_MR_LIST" items="{MR>/MRCollection}"
+									selectionChange="onSelectionChange"
+									headerText="Best Motor Response ({ScoreModel>BestMotorResponse/Value})"
+									wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+									<columns>
+										<Column hAlign="Left" />
+										<Column width="10px" hAlign="Left" />
+									</columns>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{MR>Name}" wrapping="true" />
+											<Text text="{MR>Value}" class="numberUnit" />
+										</cells>
+									</ColumnListItem>
+								</Table>
+								<Table id="API_GCS_VR_LIST" items="{VR>/VRCollection}"
+									selectionChange="onSelectionChange"
+									headerText="Best Verbal Response ({ScoreModel>BestVerbalResponse/Value})"
+									wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+									<columns>
+										<Column hAlign="Left" />
+										<Column width="10px" hAlign="Left" />
+									</columns>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{VR>Name}" wrapping="true" />
+											<Text text="{VR>Value}" class="numberUnit" />
+										</cells>
+									</ColumnListItem>
+								</Table>
+								<Table id="API_GCS_EO_LIST" items="{EO>/EOCollection}"
+									selectionChange="onSelectionChange"
+									headerText="Eye Opening ({ScoreModel>EyeOpening/Value})"
+									wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+									<columns>
+										<Column hAlign="Left" />
+										<Column width="10px" hAlign="Left" />
+									</columns>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{EO>Name}" wrapping="true" />
+											<Text text="{EO>Value}" class="numberUnit" />
+										</cells>
+									</ColumnListItem>
+								</Table>
+							</l:content>
+						</l:Grid>
+		</content>
+		<buttons>
+
+			<Button text="Release" press="_handleAPIGCSReleasePressed" id="API_GCS_RELEASE_BUTTON"
+				app:dialogType="GlasgowComaCreate" />
+			<Button text="Save" type="Accept" press="_handleAPIGCSSavePressed" id="API_GCS_SAVE_BUTTON"
+				app:dialogType="GlasgowComaCreate" />
+			<Button text="Cancel" type="Reject" press="onDialogclose"
+				app:dialogType="GlasgowComaCreate" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

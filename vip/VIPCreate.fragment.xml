@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog showHeader="false" class="sapUiSizeCompact" width="100%"
+		id="API_VIP_DIALOG">
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<Label text="Visual Infusion Phlebitis" design="Bold" />
+				</contentMiddle>
+				<contentRight>
+					<Text id="API_VIP_TOTAL" design="Bold" />
+				</contentRight>
+			</Bar>
+
+		</subHeader>
+		<content>
+			<l:Grid defaultSpan="L12 M12 S12" width="auto" position="Center"
+							vSpacing="10px">
+							<l:content>
+								<Table id="API_VIP_TABLE" items="{VIP>/VIPData}" selectionChange="onSelectionChange"
+									headerText="Visual Infusion Phlebitis" wrapping="true"
+									includeItemInSelection="false" mode="SingleSelectLeft">
+									<columns>
+										<Column hAlign="Left">
+											<ObjectStatus text="Information" />
+										</Column>
+										<Column hAlign="Left">
+											<ObjectStatus text="Interpretation" />
+										</Column>
+										<Column hAlign="Left">
+											<ObjectStatus text="Intervention" />
+										</Column>
+										<Column hAlign="Left" width="10%" />
+									</columns>
+
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{VIP>Information}" wrapping="true" />
+											<Text text="{VIP>Interpretation}" wrapping="true" />
+											<Text text="{VIP>Intervention}" wrapping="true" />
+											<Text text="{VIP>Value}" />
+										</cells>
+									</ColumnListItem>
+								</Table>
+
+							</l:content>
+						</l:Grid>
+		</content>
+		<buttons>
+
+			<Button text="Release" press="_handleAPIVIPReleasePressed" id="API_VIP_RELEASE_BUTTON"
+				app:dialogType="VIPCreate" />
+			<Button text="Save" type="Accept" press="_handleAPIVIPSavePressed" id="API_VIP_SAVE_BUTTON"
+				app:dialogType="VIPCreate" />
+			<Button text="Cancel" type="Reject" press="onDialogclose"
+				app:dialogType="VIPCreate" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

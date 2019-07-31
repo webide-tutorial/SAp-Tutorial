@@ -1,0 +1,319 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog showHeader="false" class="sapUiSizeCompact" width="100%"
+		id="API_PAIN_SCALE_DIALOG">
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<Label text="Pain Scale" design="Bold" />
+				</contentMiddle>
+				<contentRight>
+					<Text id="API_PAIN_SCALE_TOTAL" design="Bold" />
+				</contentRight>
+			</Bar>
+
+		</subHeader>
+		<content>
+		<Toolbar>
+							<ToolbarSpacer />
+							<Text text="Scale Type : " />
+							<ComboBox id="API_SCALE_TYPE_COMBO" selectionChange="onScaleTypeChange">
+								<core:Item key="1" text="Face Scale" />
+								<core:Item key="2" text="Behavioral Pain Scale" />
+								<core:Item key="3" text="FLACC Scale" />
+								<core:Item key="4" text="Neonatal Infant Pain Scale" />
+							</ComboBox>
+							<ToolbarSpacer />
+						</Toolbar>
+			<Panel id="API_FACE_SCALE_PANEL" expandable="false" expanded="true">
+							<content>
+								<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+									vSpacing="10px">
+									<l:content>
+										<Table id="API_PAIN_SCALE_FC_TABLE" items="{FS>/FaceScale}"
+											selectionChange="onFaceScaleScoreSelectionChange" headerText=""
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" width="40px" />
+												<Column hAlign="Left" />
+												<Column width="40px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Image src="{FS>image}" width="35px" height="35px" />
+													<Text text="{FS>Name}" wrapping="true" />
+													<Text text="{FS>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+									</l:content>
+								</l:Grid>
+							</content>
+						</Panel>
+						<Panel id="API_BPS_PANEL" expandable="false" expanded="true">
+							<content>
+								
+								<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+									vSpacing="10px">
+									<l:content>
+										<Table id="API_PAIN_SCALE_BMR_TABLE" items="{MR>/MRCollection}"
+											selectionChange="onBPScaleSelectionChange"
+											headerText="Facial Expression ({ScoreModelBPS>BestMotorResponse/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{MR>Name}" wrapping="true" />
+													<Text text="{MR>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_BVR_TABLE" items="{VR>/VRCollection}"
+											selectionChange="onBPScaleSelectionChange"
+											headerText="Upper Limb Movements ({ScoreModelBPS>BestVerbalResponse/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{VR>Name}" wrapping="true" />
+													<Text text="{VR>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_EO_TABLE" items="{EO>/EOCollection}"
+											selectionChange="onBPScaleSelectionChange"
+											headerText="Compliance with mechanical ventilation ({ScoreModelBPS>EyeOpening/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{EO>Name}" wrapping="true" />
+													<Text text="{EO>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+									</l:content>
+								</l:Grid>
+							</content>
+						</Panel>
+						<Panel id="API_FLACC_SCALE_PANEL" expandable="false" expanded="true">
+							<content>
+							
+								<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+									vSpacing="10px">
+									<l:content>
+										<Table id="API_PAIN_SCALE_FLACC_FACE_TABLE" items="{FLACCFACE>/FLACCFaceCollection}"
+											selectionChange="onFLACCScaleSelectionChange"
+											headerText="Face ({FLACCScaleScoreModel>Face/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{FLACCFACE>Name}" wrapping="true" />
+													<Text text="{FLACCFACE>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_FLACC_LEGS_TABLE" items="{FLACCLEGS>/FLACCLegsCollection}"
+											selectionChange="onFLACCScaleSelectionChange"
+											headerText="Legs ({FLACCScaleScoreModel>Legs/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{FLACCLEGS>Name}" wrapping="true" />
+													<Text text="{FLACCLEGS>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_FLACC_ACTIVITY_TABLE" items="{FLACCACTIVITY>/FLACCActivityCollection}"
+											selectionChange="onFLACCScaleSelectionChange"
+											headerText="Activity ({FLACCScaleScoreModel>Activity/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{FLACCACTIVITY>Name}" wrapping="true" />
+													<Text text="{FLACCACTIVITY>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+									</l:content>
+								</l:Grid>
+								<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+									vSpacing="10px">
+									<l:content>
+										<Table id="API_PAIN_SCALE_FLACC_CRY_TABLE" items="{FLACCCRY>/FLACCCryCollection}"
+											selectionChange="onFLACCScaleSelectionChange"
+											headerText="Cry ({FLACCScaleScoreModel>Cry/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{FLACCCRY>Name}" wrapping="true" />
+													<Text text="{FLACCCRY>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_FLACC_CONSOLABILITY_TABLE"
+											items="{FLACCCONSOLABILITY>/FLACCConsolabilityCollection}"
+											selectionChange="onFLACCScaleSelectionChange"
+											headerText="Consolability ({FLACCScaleScoreModel>Consolability/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{FLACCCONSOLABILITY>Name}" wrapping="true" />
+													<Text text="{FLACCCONSOLABILITY>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+									</l:content>
+								</l:Grid>
+							</content>
+						</Panel>
+						<Panel id="API_NIP_SCALE_PANEL" expandable="false" expanded="true">
+							<content>
+							
+								<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+									vSpacing="10px">
+									<l:content>
+										<Table id="API_PAIN_SCALE_NIP_FACIAL_EXPRESSION_TABLE"
+											items="{NIPFACIALEXPRS>/NIPFacialexpressionCollection}"
+											selectionChange="onNIPScaleSelectionChange"
+											headerText="Facial Expression ({NIPScaleScoreModel>FacialExpression/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{NIPFACIALEXPRS>Name}" wrapping="true" />
+													<Text text="{NIPFACIALEXPRS>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_NIP_BREATHING_PATTERN_TABLE"
+											items="{NIPBRTHNGPATRN>/NIPBreathingPatternCollection}"
+											selectionChange="onNIPScaleSelectionChange"
+											headerText="Breathing Pattern ({NIPScaleScoreModel>BreathingPattern/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{NIPBRTHNGPATRN>Name}" wrapping="true" />
+													<Text text="{NIPBRTHNGPATRN>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_NIP_ARMS_TABLE" items="{NIPARMS>/NIPArmsCollection}"
+											selectionChange="onNIPScaleSelectionChange"
+											headerText="Arms ({NIPScaleScoreModel>Arms/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{NIPARMS>Name}" wrapping="true" />
+													<Text text="{NIPARMS>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+									</l:content>
+								</l:Grid>
+								<l:Grid defaultSpan="L4 M4 S12" width="auto" position="Center"
+									vSpacing="10px">
+									<l:content>
+										<Table id="API_PAIN_SCALE_NIP_LEGS_TABLE" items="{NIPLEGS>/NIPLegsCollection}"
+											selectionChange="onNIPScaleSelectionChange"
+											headerText="Legs ({NIPScaleScoreModel>Legs/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{NIPLEGS>Name}" wrapping="true" />
+													<Text text="{NIPLEGS>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_NIP_STATE_OF_AROUSAL_TABLE"
+											items="{NIPSATEOFARSL>/NIPStateofArousalCollection}"
+											selectionChange="onNIPScaleSelectionChange"
+											headerText="State Of Arousal ({NIPScaleScoreModel>StateofArousal/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{NIPSATEOFARSL>Name}" wrapping="true" />
+													<Text text="{NIPSATEOFARSL>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+										<Table id="API_PAIN_SCALE_NIP_CRY_TABLE" items="{NIPCRY>/NIPCryCollection}"
+											selectionChange="onNIPScaleSelectionChange"
+											headerText="Cry ({NIPScaleScoreModel>Cry/Value})"
+											wrapping="true" includeItemInSelection="false" mode="SingleSelectLeft">
+											<columns>
+												<Column hAlign="Left" />
+												<Column width="10px" hAlign="Left" />
+											</columns>
+											<ColumnListItem vAlign="Middle">
+												<cells>
+													<Text text="{NIPCRY>Name}" wrapping="true" />
+													<Text text="{NIPCRY>Value}" class="numberUnit" />
+												</cells>
+											</ColumnListItem>
+										</Table>
+									</l:content>
+								</l:Grid>
+							</content>
+						</Panel>
+		</content>
+		<buttons>
+
+			<Button text="Release" press="_handleAPIPainScaleReleasePressed" id="API_PAINSCALE_RELEASE_BUTTON"
+				app:dialogType="PainScaleCreate" />
+			<Button text="Save" type="Accept" press="_handleAPIPainScaleSavePressed" id="API_PAINSCALE_SAVE_BUTTON"
+				app:dialogType="PainScaleCreate" />
+			<Button text="Cancel" type="Reject" press="onDialogclose"
+				app:dialogType="PainScaleCreate" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

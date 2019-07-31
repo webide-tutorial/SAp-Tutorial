@@ -1,0 +1,74 @@
+{
+    "resources": [
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "META-INF/MANIFEST.MF"
+        },
+        {
+            "name": "WEB-INF/web.xml"
+        },
+        {
+            "name": "braden/Braden.js"
+        },
+        {
+            "name": "braden/BradenCreate.fragment.xml"
+        },
+        {
+            "name": "fallRiskAssessment/FallRiskAssessment.js"
+        },
+        {
+            "name": "fallRiskAssessment/FallRiskAssessmentCreate.fragment.xml"
+        },
+        {
+            "name": "glasgowComa/GlasgowComa.js"
+        },
+        {
+            "name": "glasgowComa/GlasgowComaCreate.fragment.xml"
+        },
+        {
+            "name": "painScale/PainScale.js"
+        },
+        {
+            "name": "painScale/PainScaleCreate.fragment.xml"
+        },
+        {
+            "name": "utils/Formatter.js"
+        },
+        {
+            "name": "vip/VIP.js"
+        },
+        {
+            "name": "vip/VIPCreate.fragment.xml"
+        },
+        {
+            "name": "images/PainScale/0.PNG"
+        },
+        {
+            "name": "images/PainScale/1.PNG"
+        },
+        {
+            "name": "images/PainScale/2.PNG"
+        },
+        {
+            "name": "images/PainScale/3.PNG"
+        },
+        {
+            "name": "images/PainScale/5.PNG"
+        },
+        {
+            "name": "images/PainScale/4.PNG"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}
