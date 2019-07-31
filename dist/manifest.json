@@ -9,6 +9,8 @@
         "applicationVersion": {
             "version": "1.0.0"
         },
+        
+        
         "dataSources": {
             "mainService": {
                 "uri": "/NorthwindODataService/V2/Northwind/Northwind.svc/",
